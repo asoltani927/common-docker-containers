@@ -58,7 +58,7 @@ services:
     restart: unless-stopped
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0
     container_name: mysqldev
     volumes:
       - db_mysql:/var/lib/mysql:rw
@@ -68,9 +68,9 @@ services:
     ports:
       - 3306:3306
     networks:
-        - aminnet
+      - aminnet
     env_file:
-    - docker.env
+      - docker.env
 
   mongodev:
     container_name: mongodev
@@ -116,7 +116,7 @@ services:
       - '60:80'
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: amin@Mysql
     networks:
       - aminnet
 networks:
