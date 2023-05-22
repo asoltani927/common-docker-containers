@@ -4,7 +4,7 @@ services:
   # Elasticsearch Docker Images: https://www.docker.elastic.co/
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
-    container_name: elasticsearch
+    container_name: "my-elasticsearch"
     env_file:
      - docker.env
     ulimits:
@@ -22,7 +22,7 @@ services:
       - 9200:9200
 
   kibana:
-    container_name: kibana
+    container_name: "my-kibana"
     image: docker.elastic.co/kibana/kibana:7.12.0
     env_file:
      - docker.env
@@ -32,7 +32,7 @@ services:
       - elasticsearch
   #Postgres
   postgres:
-    container_name: postgres_container
+    container_name: "my-postgres_container"
     image: postgres
     env_file:
      - docker.env
@@ -45,7 +45,7 @@ services:
     restart: unless-stopped
   
   pgadmin:
-    container_name: pgadmin_container
+    container_name: "my-pgadmin_container"
     image: dpage/pgadmin4
     env_file:
       - docker.env
@@ -59,7 +59,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: mysqldev
+    container_name: "my-mysqldev"
     volumes:
       - db_mysql:/var/lib/mysql:rw
     restart: always
@@ -73,7 +73,7 @@ services:
       - docker.env
 
   mongodev:
-    container_name: mongodev
+    container_name: "my-mongodev"
     image: mongo
     ports:
       - "27017:27017"
@@ -90,7 +90,7 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6379"
-    container_name: redis
+    container_name: "my-redis"
     volumes:
         - db_redis:/data:rw
     networks:
