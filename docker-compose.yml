@@ -97,7 +97,7 @@ services:
         - aminnet
   adminer:
     image: adminer
-    container_name: adminer
+    container_name: "my-adminer"
     restart: always
     ports:
       - 90:8080
