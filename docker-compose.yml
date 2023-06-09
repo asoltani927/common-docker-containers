@@ -117,6 +117,7 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: amin@Mysql
+      UPLOAD_LIMIT: 300M
     networks:
       - aminnet
 networks:
