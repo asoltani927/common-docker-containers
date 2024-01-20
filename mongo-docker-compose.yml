@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+
+  mongo:
+    container_name: "my-mongodev"
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+        - aminnet
+    expose:
+      - 27017
+    restart: always
+    volumes:
+      - db_mongo:/data/db:rw
+
+networks:
+  aminnet:
+    external: true
+
+volumes:
+  db_mongo: {}

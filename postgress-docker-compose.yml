@@ -1,0 +1,45 @@
+version: '3.5'
+
+services:
+
+  #Postgres
+  postgres:
+    container_name: "my-postgres_container"
+    image: postgres
+    env_file:
+      - docker.env
+    volumes:
+      - db_post:/var/lib/postgresql/data:rw
+      - ./config/pg_hba.conf:/var/lib/foo/pg_hba.conf
+    command: ["postgres", "-c", "hba_file=/var/lib/foo/pg_hba.conf"]
+    ports:
+      - "5432:5432"
+    networks:
+      - aminnet
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: "my-pgadmin_container"
+    image: dpage/pgadmin4
+    env_file:
+      - docker.env
+    volumes:
+      - db_pgadmin:/root/.pgadmin:rw
+    ports:
+      - "5050:80"
+    networks:
+      - aminnet
+    restart: unless-stopped
+
+networks:
+  aminnet:
+    external: true
+
+volumes:
+  elasticsearch-data:
+    driver: local
+  db_mysql: {}
+  db_mongo: {}
+  db_post: {}
+  db_redis: {}
+  db_pgadmin: {}

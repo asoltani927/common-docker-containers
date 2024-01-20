@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  kibana:
+    container_name: "my-kibana"
+    image: docker.elastic.co/kibana/kibana:7.12.0
+    env_file:
+      - docker.env
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+
+networks:
+  aminnet:
+    external: true
+
+volumes:
+  elasticsearch-data:
+    driver: local
+  db_mysql: {}
+  db_mongo: {}
+  db_post: {}
+  db_redis: {}
+  db_pgadmin: {}

@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+
+  adminer:
+    image: adminer
+    container_name: "my-adminer"
+    restart: always
+    ports:
+      - 90:8080
+    expose:
+      - 90
+    networks:
+        - aminnet
+
+
+networks:
+  aminnet:
+    external: true
